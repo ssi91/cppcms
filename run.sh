@@ -1,3 +1,3 @@
-g++ *.cpp -o main
+g++ *.cpp -o ./Debug/main
 chmod 755 main
 ./main
