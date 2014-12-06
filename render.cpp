@@ -2,11 +2,25 @@ class Render
 {
 	private:
 		int n;
-		string *vars;
+		varrender *vars;
 	public:
 		Render()
 		{
 			
 		}
 		
+		Render(varrender *_vars)
+		{
+			
+		}
+
+		string *getTemplates()
+		{
+		
+		}
+		
+		string *getVarNames()
+		{
+		
+		}
 };
