@@ -1,12 +1,15 @@
 #include <stdio.h>
-#include <string>
+#include <iostream>
+#include <string.h>
+
+using namespace std;
 
 struct varrender
 {
 	string templ;
 	string *varname;
 	string *varval;
-}
+};
 
 int main()
 {
