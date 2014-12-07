@@ -4,12 +4,12 @@
 
 using namespace std;
 
-struct varrender
+/*struct varrender
 {
 	string templ;
 	string *varname;
 	string *varval;
-};
+};*/
 
 #include "render.h"
 
@@ -22,6 +22,8 @@ int main()
 	vars.varname[0] = "var0";	
 	vars.varval = new string;	
 	vars.varval[0] = "val0";	
+
+	Render render(vars);
 	
 	return 0;
 }

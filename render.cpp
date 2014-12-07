@@ -5,17 +5,17 @@ Render::Render()
 	
 }
 
-Render::Render(varrender *_vars)
+Render::Render(varrender _vars)
 {
 
 }
 
-string * Render::getTemplates()
+string Render::getTemplates()
 {
 	return "debug";
 }
 
-string * Render::getVarNames()
+string Render::getVarNames()
 {
 	return "debug";
 }
