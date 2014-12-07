@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <iostream>
-#include <string.h>
+#include <string>
 
 using namespace std;
 
@@ -24,6 +24,6 @@ int main()
 	vars.varval[0] = "val0";	
 
 	Render render(vars);
-	
+	cout << render.getTemplates() << endl;
 	return 0;
 }
