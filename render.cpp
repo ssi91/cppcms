@@ -1,26 +1,21 @@
-class Render
-{
-	private:
-		int n;
-		varrender *vars;
-	public:
-		Render()
-		{
-			
-		}
-		
-		Render(varrender *_vars)
-		{
-			
-		}
+#include "render.h"
 
-		string *getTemplates()
-		{
-		
-		}
-		
-		string *getVarNames()
-		{
-		
-		}
-};
+Render::Render()
+{
+	
+}
+
+Render::Render(varrender *_vars)
+{
+
+}
+
+string * Render::getTemplates()
+{
+	return "debug";
+}
+
+string * Render::getVarNames()
+{
+	return "debug";
+}
