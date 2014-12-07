@@ -19,3 +19,8 @@ string Render::getVarNames()
 {
 	return vars.varname[0];
 }
+
+string Render::getVarValue()
+{
+	return vars.varval[0];
+}

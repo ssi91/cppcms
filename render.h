@@ -19,4 +19,5 @@ class Render
 		Render(varrender _vars);
 		string getTemplates();
 		string getVarNames();
+		string getVarValue();
 };
