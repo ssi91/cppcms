@@ -11,6 +11,8 @@ struct varrender
 	string *varval;
 };
 
+#include "render.h"
+
 int main()
 {
 	varrender vars;
