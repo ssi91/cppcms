@@ -4,6 +4,8 @@
 
 using namespace std;
 
+string path = "./temps/";
+
 struct varrender
 {
         string templ;
