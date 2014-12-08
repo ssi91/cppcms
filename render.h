@@ -1,3 +1,5 @@
+#ifndef RENDER_H
+#define RENDER_H
 #include <iostream>
 
 using namespace std;
@@ -21,3 +23,4 @@ class Render
 		string getVarNames();
 		string getVarValue();
 };
+#endif

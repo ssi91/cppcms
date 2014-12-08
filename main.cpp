@@ -1,17 +1,10 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
+#include "render.h"
+#include "compil.h"
 
 using namespace std;
-
-/*struct varrender
-{
-	string templ;
-	string *varname;
-	string *varval;
-};*/
-
-#include "render.h"
 
 int main()
 {

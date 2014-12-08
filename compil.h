@@ -7,4 +7,4 @@ class Compil
 	public:
 		Compil();
 		Compil(Render);
-}
+};
