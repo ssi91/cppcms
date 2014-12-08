@@ -10,3 +10,7 @@ Compil::Compil(Render render)
 	
 }
 
+void Compil::createHTML()
+{
+	
+}
