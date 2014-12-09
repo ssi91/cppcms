@@ -21,6 +21,7 @@ class Render
 	public:
 		Render();
 		Render(varrender _vars);
+		Render(const Render &a);
 		string getTemplates();
 		string getVarNames();
 		string getVarValue();

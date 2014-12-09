@@ -6,9 +6,9 @@ Compil::Compil()
 	
 }
 
-Compil::Compil(Render render)
+Compil::Compil(Render _render)
 {
-	
+	render = _render;
 }
 
 void Compil::readTemplate()
