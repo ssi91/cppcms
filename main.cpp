@@ -3,6 +3,7 @@
 #include <string>
 #include "render.h"
 #include "compil.h"
+extern string path;
 
 using namespace std;
 
@@ -18,5 +19,8 @@ int main()
 
 	Render render(vars);
 	cout << render.getTemplates() << endl;
+
+	Compil com(render);
+	com.createHTML();
 	return 0;
 }

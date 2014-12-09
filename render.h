@@ -4,7 +4,7 @@
 
 using namespace std;
 
-string path = "./temps/";
+//extern string path;
 
 struct varrender
 {
