@@ -16,16 +16,13 @@ string Compil::readTemplate()
 	string path = "./temps/";
 	string s = path + render.getTemplates();
 	ifstream istr(s.c_str());
-//	istr.open(path + render.getTemplates());
 	char brace;
 	istr.get(brace);
 	int i = 0;
 	string templString;
 	while (!istr.eof())
 	{
-		//cout << i << ": " << brace << endl;
 		templString += brace;
-		cout << i << ": " << templString << endl;
 		istr.get(brace);
 		++i;
 	}
