@@ -7,7 +7,7 @@ class Compil
 	private:
 		Render render;
 
-		void readTemplate();
+		string readTemplate();
 		void writeHTML();
 	public:
 		Compil();
