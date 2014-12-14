@@ -1,5 +1,7 @@
 #include "compil.h"
 #include <fstream>
+#include <sys/stat.h>
+#include <dirent.h>
 
 Compil::Compil()
 {
@@ -33,6 +35,10 @@ string Compil::readTemplate()
 void Compil::writeHTML(const string &htmlStr)
 {
 	string path = "./compils/";
+	DIR *d = opendir(path.c_str());
+	if (d == NULL)
+		mkdir(path.c_str(), S_IRWXU);
+		
 	string s = path + render.getTemplates() + ".html";
 	ofstream ostr(s.c_str());
 

@@ -10,7 +10,6 @@ using namespace std;
 int main()
 {
 	varrender vars;
-
 	vars.templ = "index.templ";
 	vars.varname = new string;	
 	vars.varname[0] = "var0";	
