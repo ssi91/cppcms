@@ -8,7 +8,7 @@ class Compil
 		Render render;
 
 		string readTemplate();
-		void writeHTML();
+		void writeHTML(const string&);
 	public:
 		Compil();
 		Compil(Render);

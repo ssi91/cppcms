@@ -30,16 +30,25 @@ string Compil::readTemplate()
 	return templString;
 }
 
-void Compil::writeHTML()
+void Compil::writeHTML(const string &htmlStr)
 {
+	string path = "./compils/";
+	string s = path + render.getTemplates() + ".html";
+	ofstream ostr(s.c_str());
 
+//	for (string::iterator it = *htmlStr.begin(); it != *htmlStr.end(); ++it)
+//	{
+		ostr << htmlStr;
+//	}
 }
 
 void Compil::createHTML()
 {
-	string tplStr =  this->readTemplate();
+	string tplStr = this->readTemplate();
+	string resultStr = "";
 	int i = 0;
-
+	int blockStart = 0;
+	int varStart;
 	while (i < tplStr.size())
 	{
 		if (tplStr[i] == '{')
@@ -48,6 +57,7 @@ void Compil::createHTML()
 			if (tplStr[i] == '{')
 			{
 				int j = i + 1;
+				varStart = i - 1;
 				string varName = "";
 				while (!((tplStr[j] == '}') && (tplStr[j + 1] == '}')))
 				{
@@ -55,6 +65,16 @@ void Compil::createHTML()
 					++j;
 				}
 				i = j;
+				int varEnd = ++i;
+				if (varName == render.getVarNames())
+				{
+					for (int k = blockStart; k < varStart; k++)
+					{
+						resultStr += tplStr[k];
+					}
+					resultStr += render.getVarValue();
+					blockStart = varEnd + 1;
+				}
 			}
 			else
 			{
@@ -63,4 +83,9 @@ void Compil::createHTML()
 		}
 		++i;
 	}
+	for (int k = blockStart; k < tplStr.size(); k++)
+	{
+		resultStr += tplStr[k];
+	}
+	this->writeHTML(resultStr);
 }
