@@ -1,17 +1,6 @@
-#include <thread.h> 
-#include <sys/types.h> 
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
+#include "servsock.h"
 
-#include "fcgi_config.h" 
-#include "fcgiapp.h" 
-
-#define THREAD_COUNT 1
-#define SOCKET_PATH "127.0.0.1:9000" 
-
-//хранит дескриптор открытого сокета 
-static int socketId;
+extern int socketId;
 
 bool getGetParam(char *to, const char *paramName, FCGX_Request *request)
 {
@@ -86,7 +75,7 @@ bool getGetParam(char *to, const char *paramName, FCGX_Request *request)
 	return false;
 }
 
-static void *doit(void *a)
+void *doit(void *a)
 {
 	int rc, i;
 	FCGX_Request request;
@@ -162,37 +151,4 @@ static void *doit(void *a)
 	}
 
 	return NULL;
-}
-
-int main(void)
-{
-	int i;
-	pthread_t id[THREAD_COUNT];
-
-	//инициализация библилиотеки
-	FCGX_Init();
-	printf("Lib is inited\n");
-
-	//открываем новый сокет
-	socketId = FCGX_OpenSocket(SOCKET_PATH, 20);
-	if (socketId < 0)
-	{
-		//ошибка при открытии сокета
-		return 1;
-	}
-	printf("Socket is opened\n");
-
-	//создаём рабочие потоки
-	for (i = 0; i < THREAD_COUNT; i++)
-	{
-		pthread_create(&id[i], NULL, doit, NULL);
-	}
-
-	//ждем завершения рабочих потоков
-	for (i = 0; i < THREAD_COUNT; i++)
-	{
-		pthread_join(id[i], NULL);
-	}
-
-	return 0;
 }
