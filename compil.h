@@ -12,6 +12,7 @@ class Compil
 	public:
 		Compil();
 		Compil(Render);
+		Compil(const Compil &_render);
 
 		void createHTML();
 };

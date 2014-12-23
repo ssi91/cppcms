@@ -13,6 +13,11 @@ Compil::Compil(Render _render)
 	render = _render;
 }
 
+Compil::Compil(const Compil &_compil)
+{
+	render = _compil.render;
+}
+
 string Compil::readTemplate()
 {
 	string path = "./temps/";
