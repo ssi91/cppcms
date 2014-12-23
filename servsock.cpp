@@ -81,6 +81,18 @@ void *doit(void *a)
 	FCGX_Request request;
 	char *server_name;
 
+	ifstream istr("compils/index.templ.html");
+	string html = "";
+	char c;
+	istr.get(c);
+	while(!istr.eof())
+	{
+		html += c;
+		istr.get(c);
+	}
+	cout << html << endl;
+	istr.close();
+
 	if (FCGX_InitRequest(&request, socketId, 0) != 0)
 	{
 		//ошибка при инициализации структуры запроса
@@ -116,9 +128,9 @@ void *doit(void *a)
 
 		//между заголовками и телом ответа нужно вывести пустую строку
 		FCGX_PutS("\r\n", request.out);
-
+		FCGX_PutS(html.c_str(), request.out);
 		//вывести тело ответа (например - html-код веб-страницы)
-		FCGX_PutS("<html>\r\n", request.out);
+		/*FCGX_PutS("<html>\r\n", request.out);
 		FCGX_PutS("<head>\r\n", request.out);
 		FCGX_PutS("<title>FastCGI Hello! (multi-threaded C, fcgiapp library)</title>\r\n", request.out);
 		FCGX_PutS("</head>\r\n", request.out);
@@ -139,7 +151,7 @@ void *doit(void *a)
 		FCGX_PutS(to ? to : "?", request.out);
 		FCGX_PutS("</i></p>\r\n", request.out);
 		FCGX_PutS("</body>\r\n", request.out);
-		FCGX_PutS("</html>\r\n", request.out);
+		FCGX_PutS("</html>\r\n", request.out);*/
 
 		//"заснуть" - имитация многопоточной среды
 		sleep(0);
