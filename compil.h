@@ -15,5 +15,7 @@ class Compil
 		Compil(const Compil &_render);
 
 		void createHTML();
+		string getTemplates();
+		string getHTML();
 };
 #endif

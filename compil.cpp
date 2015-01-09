@@ -47,10 +47,7 @@ void Compil::writeHTML(const string &htmlStr)
 	string s = path + render.getTemplates() + ".html";
 	ofstream ostr(s.c_str());
 
-//	for (string::iterator it = *htmlStr.begin(); it != *htmlStr.end(); ++it)
-//	{
-		ostr << htmlStr;
-//	}
+	ostr << htmlStr;
 }
 
 void Compil::createHTML()
@@ -99,4 +96,14 @@ void Compil::createHTML()
 		resultStr += tplStr[k];
 	}
 	this->writeHTML(resultStr);
+}
+
+string Compil::getTemplates()
+{
+	return render.getTemplates();
+}
+
+string Compil::getHTML()
+{
+	return this->getTemplates() + ".html";
 }
