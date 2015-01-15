@@ -20,7 +20,7 @@ class Render
 		varrender vars;
 	public:
 		Render();
-		Render(varrender _vars);
+		Render(const varrender &_vars, const int &_n);
 		Render(const Render &a);
 		string getTemplates();
 		string getVarNames();

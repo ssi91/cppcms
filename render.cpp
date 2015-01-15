@@ -5,9 +5,10 @@ Render::Render()
 	
 }
 
-Render::Render(varrender _vars)
+Render::Render(const varrender &_vars, const int &_n)
 {
 	vars = _vars;
+	n = _n;
 }
 
 Render::Render(const Render &a)

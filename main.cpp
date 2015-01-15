@@ -16,14 +16,17 @@ using namespace std;
 
 int main()
 {
+	int n = 2;
 	varrender vars;
 	vars.templ = "index.templ";
-	vars.varname = new string;	
-	vars.varname[0] = "var0";	
-	vars.varval = new string;	
+	vars.varname = new string[n];	
+	vars.varname[0] = "var0";
+	vars.varname[1] = "var1";
+	vars.varval = new string[n];
 	vars.varval[0] = "val0";	
+	vars.varval[1] = "val1";	
 
-	Render render(vars);
+	Render render(vars, n);
 	cout << render.getTemplates() << endl;
 
 	Compil com(render);
