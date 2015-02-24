@@ -1,8 +1,8 @@
-#include "varrender.cpp"
+#include "varrender.h"
 
 VarRender::VarRender(const string _templ, bool _global)
 {
-	if (_templ != NULL)
+	if (_templ != "")
 	{
 		templ = _templ;
 		global = _global;
@@ -23,20 +23,20 @@ VarRender::VarRender(VarRender &a)
 	varval = new string[count];
 	for(int i = 0; i < count; i++)
 	{
-		varname = a.varname[i];
-		varval = a.varval[i];
+		varname[i] = a.varname[i];
+		varval[i] = a.varval[i];
 	}
 	global = a.global;
 	templ = a.templ;
 }
 
-void VarRender::initVar(const &_varname, const &_varval)
+void VarRender::initVar(const string &_varname, const string &_varval)
 {
 	if (count)
 	{
-		string **temp = new string[2];
-		string *temp[0] = new string[count];//varname
-		string *temp[1] = new string[count];//varval
+		string **temp = new string*[2];
+		temp[0] = new string[count];//varname
+		temp[1] = new string[count];//varval
 		for(int i = 0; i < count; i++)
 		{
 			temp[0][i] = varname[i];
@@ -74,7 +74,7 @@ vector<string> VarRender::getVars()
 		vector<string> vs(count);
 		for(int i = 0; i < count; i++)
 		{
-			vs.push_back(varname[i])
+			vs.push_back(varname[i]);
 		}
 		return vs;
 	}
@@ -91,7 +91,7 @@ vector<string> VarRender::getVals()
 		vector<string> vs(count);
 		for(int i = 0; i < count; i++)
 		{
-			vs.push_back(varval[i])
+			vs.push_back(varval[i]);
 		}
 		return vs;
 	}
@@ -117,7 +117,7 @@ string VarRender::getVals(string _varname)
 			}
 		}
 		if(retIndex > -1)
-			return varname[retIndex];
+			return varval[retIndex];
 		else
 		{
 			//TODO throw var not found

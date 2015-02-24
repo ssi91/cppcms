@@ -1,5 +1,11 @@
 #ifndef VARRENDER_H
 #define VARRENDER_H
+
+#include <string>
+#include <vector>
+
+using namespace std;
+
 class VarRender
 {
 	private:
@@ -9,11 +15,11 @@ class VarRender
 		size_t count;
 		bool global;
 	public:
-		VarRender(const string _templ = NULL, bool _global = false);
+		VarRender(const string _templ = "", bool _global = false);
 
-		VarRender(VarRender &a)
+		VarRender(VarRender &a);
 
-		void initVar(const &_varname, const &_varval = "");
+		void initVar(const string &_varname, const string &_varval = "");
 		string getTemplName();
 		vector<string> getVars();
 		vector<string> getVals();
