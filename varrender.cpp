@@ -10,7 +10,7 @@ VarRender::VarRender(const string _templ, bool _global)
 	}
 	else
 	{
-		//TODO
+		throw LOG_TRACE("Name of template is empty!")
 	}
 }
 
@@ -80,7 +80,7 @@ vector<string> VarRender::getVars()
 	}
 	else
 	{
-		//TODO thow
+		throw LOG_TRACE("Count of var is null(0)")
 	}
 }
 
@@ -97,7 +97,7 @@ vector<string> VarRender::getVals()
 	}
 	else
 	{
-		//TODO thow
+		throw LOG_TRACE("Count of var is null(0)")
 	}
 }
 
@@ -120,12 +120,12 @@ string VarRender::getVals(string _varname)
 			return varval[retIndex];
 		else
 		{
-			//TODO throw var not found
+			throw LOG_TRACE("var not found")
 		}
 	}
 	else
 	{
-		//TODO throw count <= 0
+		throw LOG_TRACE("Count of var is null(0)")
 	}
 }
 
