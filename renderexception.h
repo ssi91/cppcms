@@ -1,6 +1,6 @@
 #ifndef RENDEX_H
 #define RENDEX_H
-#define LOG_TRACE new RenderException("test error", __FUNCTION__, __FILE__, __LINE__);
+#define LOG_TRACE(ERROR) new RenderException(ERROR, __FUNCTION__, __FILE__, __LINE__);
 #include <iostream>
 #include <exception>
 #include <string>
