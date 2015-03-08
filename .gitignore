@@ -1,3 +1,5 @@
 /Debug/
 /compils/*
 /maintest.cpp
+/CMakeLists.txt
+/.idea/*

@@ -2,26 +2,19 @@
 
 VarRender::VarRender(const string _templ, bool _global)
 {
-	if (_templ != "")
-	{
-		templ = _templ;
-		global = _global;
-		count = 0;
-	}
-	else
-	{
-		throw LOG_TRACE("Name of template is empty!")
-	}
+	templ = _templ;
+	global = _global;
+	count = 0;
 }
 
 VarRender::VarRender(VarRender &a)
 {
 	count = a.count;
-	delete [] varname; 
-	delete [] varval; 
+	delete[] varname;
+	delete[] varval;
 	varname = new string[count];
 	varval = new string[count];
-	for(int i = 0; i < count; i++)
+	for (int i = 0; i < count; i++)
 	{
 		varname[i] = a.varname[i];
 		varval[i] = a.varval[i];
@@ -34,19 +27,19 @@ void VarRender::initVar(const string &_varname, const string &_varval)
 {
 	if (count)
 	{
-		string **temp = new string*[2];
+		string **temp = new string *[2];
 		temp[0] = new string[count];//varname
 		temp[1] = new string[count];//varval
-		for(int i = 0; i < count; i++)
+		for (int i = 0; i < count; i++)
 		{
 			temp[0][i] = varname[i];
 			temp[1][i] = varval[i];
 		}
-		delete [] varname;
-		delete [] varval;
+		delete[] varname;
+		delete[] varval;
 		varval = new string[count + 1];
 		varname = new string[count + 1];
-		for(int i = 0; i < count; i++)
+		for (int i = 0; i < count; i++)
 		{
 			varname[i] = temp[0][i];
 			varval[i] = temp[1][i];
@@ -69,10 +62,10 @@ string VarRender::getTemplName()
 
 vector<string> VarRender::getVars()
 {
-	if(count)
+	if (count)
 	{
 		vector<string> vs(count);
-		for(int i = 0; i < count; i++)
+		for (int i = 0; i < count; i++)
 		{
 			vs.push_back(varname[i]);
 		}
@@ -86,10 +79,10 @@ vector<string> VarRender::getVars()
 
 vector<string> VarRender::getVals()
 {
-	if(count)
+	if (count)
 	{
 		vector<string> vs(count);
-		for(int i = 0; i < count; i++)
+		for (int i = 0; i < count; i++)
 		{
 			vs.push_back(varval[i]);
 		}
@@ -106,8 +99,8 @@ string VarRender::getVals(string _varname)
 	//bool find = false;
 	if (count > 0)
 	{
-		int retIndex = -1; 
-		for(int i = 0; i < count; i++)
+		int retIndex = -1;
+		for (int i = 0; i < count; i++)
 		{
 			if (varname[i] == _varname)
 			{
@@ -116,7 +109,7 @@ string VarRender::getVals(string _varname)
 				break;
 			}
 		}
-		if(retIndex > -1)
+		if (retIndex > -1)
 			return varval[retIndex];
 		else
 		{
