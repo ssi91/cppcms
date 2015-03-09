@@ -64,7 +64,7 @@ vector<string> VarRender::getVars()
 {
 	if (count)
 	{
-		vector<string> vs(count);
+		vector<string> vs;
 		for (int i = 0; i < count; i++)
 		{
 			vs.push_back(varname[i]);
@@ -81,7 +81,7 @@ vector<string> VarRender::getVals()
 {
 	if (count)
 	{
-		vector<string> vs(count);
+		vector<string> vs;
 		for (int i = 0; i < count; i++)
 		{
 			vs.push_back(varval[i]);

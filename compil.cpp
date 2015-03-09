@@ -1,27 +1,29 @@
 #include "compil.h"
+#include "varrender.h"
 #include <fstream>
 #include <sys/stat.h>
 #include <dirent.h>
 
 Compil::Compil()
 {
-	
+
 }
 
-Compil::Compil(Render _render)
+Compil::Compil(const VarRender &_var)
 {
-	render = _render;
+	var = _var;
 }
 
 Compil::Compil(const Compil &_compil)
 {
-	render = _compil.render;
+	var = _compil.var;
 }
 
 string Compil::readTemplate()
 {
-	string path = "./temps/";
-	string s = path + render.getTemplates();
+	string path = __DIR__;
+	path += "temps/";
+	string s = path + var.getTemplName();
 	ifstream istr(s.c_str());
 	char brace;
 	istr.get(brace);
@@ -39,12 +41,13 @@ string Compil::readTemplate()
 
 void Compil::writeHTML(const string &htmlStr)
 {
-	string path = "./compils/";
+	string path = __DIR__;
+	path += "compils/";
 	DIR *d = opendir(path.c_str());
 	if (d == NULL)
 		mkdir(path.c_str(), S_IRWXU);
-		
-	string s = path + render.getTemplates() + ".html";
+
+	string s = path + var.getTemplName() + ".html";
 	ofstream ostr(s.c_str());
 
 	ostr << htmlStr;
@@ -74,14 +77,19 @@ void Compil::createHTML()
 				}
 				i = j;
 				int varEnd = ++i;
-				if (varName == render.getVarNames())
+				vector<string> tempVec = var.getVars();
+				for (int m = 0; m < var.getCount(); m++)
 				{
-					for (int k = blockStart; k < varStart; k++)
+					if (varName == tempVec[m])
 					{
-						resultStr += tplStr[k];
+						for (int k = blockStart; k < varStart; k++)
+						{
+							resultStr += tplStr[k];
+						}
+						blockStart = varEnd + 1;
+						vector<string> tempVecVal = var.getVals();
+						resultStr += tempVecVal[m];
 					}
-					resultStr += render.getVarValue();
-					blockStart = varEnd + 1;
 				}
 			}
 			else
@@ -100,7 +108,7 @@ void Compil::createHTML()
 
 string Compil::getTemplates()
 {
-	return render.getTemplates();
+	return var.getTemplName();
 }
 
 string Compil::getHTML()
