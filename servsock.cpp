@@ -80,8 +80,9 @@ void *doit(void *a)
 	int rc, i;
 	FCGX_Request request;
 	char *server_name;
-
-	ifstream istr("compils/index.templ.html");
+	std::string s = __DIR__;
+	s += "compils/index.templ.html";
+	ifstream istr(s.c_str());
 	string html = "";
 	char c;
 	istr.get(c);
@@ -90,7 +91,7 @@ void *doit(void *a)
 		html += c;
 		istr.get(c);
 	}
-	cout << html << endl;
+//	cout << html << endl;
 	istr.close();
 
 	if (FCGX_InitRequest(&request, socketId, 0) != 0)

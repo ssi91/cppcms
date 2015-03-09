@@ -5,10 +5,12 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+#include <string>
 #include <iostream>
 #include <fstream>
 #include "fcgi_config.h" 
 #include "fcgiapp.h" 
+#include "dir.h"
 
 #define THREAD_COUNT 1
 #define SOCKET_PATH "127.0.0.1:9000" 
